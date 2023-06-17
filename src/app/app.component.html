@@ -1,0 +1,72 @@
+
+<div class="card flex justify-content-center">
+  <p-button label="Ver reporte" icon="pi pi-check"></p-button>
+</div>
+
+
+<div class="card">
+  <p-table
+      #dt2
+      [value]="recaudos"
+      dataKey="id"
+      [rows]="5"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [globalFilterFields]="['estacion', 'sentido', 'hora', 'categoria','valorTabulado']"
+      [tableStyle]="{ 'min-width': '75rem' }"
+      >
+      
+      <ng-template pTemplate="header">
+          <tr>
+              <th style="width:22%">estacion</th>
+              <th style="width:22%">sentido</th>
+              <th style="width:22%">hora</th>
+              <th style="width:22%">categoria</th>
+              <th style="width:12%">valorTabulado</th>
+          </tr>
+          <tr>
+              <th>
+                  <p-columnFilter type="text" field="estacion"></p-columnFilter>
+              </th>
+              <th>
+                  <p-columnFilter type="text" field="sentido"></p-columnFilter>
+              </th>
+              <th>
+                <p-columnFilter type="text" field="hora"></p-columnFilter>
+              </th>
+              <th>
+                <p-columnFilter type="text" field="categoria"></p-columnFilter>
+              </th>
+              <th>
+                  <p-columnFilter type="boolean" field="valorTabulado"></p-columnFilter>
+              </th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-recaudo>
+          <tr>
+              <td>
+                  {{ recaudo.estacion }}
+              </td>
+              <td>
+                {{ recaudo.sentido }}
+              </td>
+              <td>
+                {{ recaudo.hora }}
+              </td>
+              <td>
+                {{ recaudo.categoria }}
+              </td>
+              <td>
+                {{ recaudo.valorTabulado }}
+              </td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+          <tr>
+              <td colspan="5">No customers found.</td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>
