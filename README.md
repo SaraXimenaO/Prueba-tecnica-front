@@ -1,19 +1,22 @@
 # PruebaTecnicaFront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0. and primeNg 16.0.1
+Aplicación que muestra los recaudos en una tabla y genera un reprote.
 
-## Development server
+## Uso
 
 Ejecute `ng serve` para un servidor dev. Navegue a `http://localhost:4200/`. La aplicación se recargará automáticamente si cambias alguno de los archivos fuente.
 
-## Code scaffolding
+# Requisitos previos
+1. Instalar angular version 16.1.0. y primeNg 16.0.1 version
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Instalación
+
+Obtener los cambios de la rama master localmente
+Compilar el proyecto y ejecutar
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Ejecute `ng build` para construir el proyecto. Los artefactos de construcción se almacenarán en el directorio `dist/`.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Diagrama de componentes
+![image](https://github.com/sxxor/PruebaTecnica/assets/7612153/c7ca86b6-80b1-4b64-a513-9c0d84ddfefe)
