@@ -1,6 +1,6 @@
 # PruebaTecnicaFront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0. and primeNg 16.0.1
 
 ## Development server
 
