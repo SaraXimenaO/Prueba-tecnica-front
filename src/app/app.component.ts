@@ -3,6 +3,7 @@ import { recaudo } from './models/recaudo-model'
 import { RecaudoService } from './services/recaudos-service';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -26,4 +27,6 @@ export class AppComponent implements OnInit {
       }
     );
   }
+
+  
 }
