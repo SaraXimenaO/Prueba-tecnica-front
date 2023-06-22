@@ -30,6 +30,7 @@ export class ReportComponent implements OnInit {
   getHeaders(){
     debugger;
     let headers: any[] = [];
+    headers.push("");
     for (let i = 0; i < this.report.length; i++) {
       headers.push(this.report[i].estacion);
     }
@@ -38,6 +39,7 @@ export class ReportComponent implements OnInit {
 
   getBody(){
     let elements: any[] = [];
+    elements.push("2021-08-01")
     for (let i = 0; i < this.report.length; i++) {
       elements.push(this.report[i].valorCant +" " + this.report[i].valorTabulado);
     }
