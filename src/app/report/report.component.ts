@@ -15,6 +15,7 @@ import { report } from '../models/report-model';
 export class ReportComponent implements OnInit {
   report: report[] = [];
   body : any[] = [];
+  totales : any[] = [];
   constructor(private reportService: ReportService) { }
   ngOnInit(): void {
     this.reportService.GetReport('2021-08-01').subscribe(
@@ -28,7 +29,6 @@ export class ReportComponent implements OnInit {
   }
 
   getHeaders(){
-    debugger;
     let headers: any[] = [];
     headers.push("");
     for (let i = 0; i < this.report.length; i++) {
@@ -47,7 +47,6 @@ export class ReportComponent implements OnInit {
   }
 
   GetTotal(){
-    debugger;
     let elements: any[] = [];
     let totalCant = 0;
     let totalTab = 0;
@@ -62,6 +61,25 @@ export class ReportComponent implements OnInit {
     
     return elements;
   }
+
+  getTotalGeneral(){
+    debugger;
+    let elements: any[] = [];
+    elements.push("Totales")
+    let totalCant = 0;
+    let totalTab = 0;
+    for (let i = 0; i < this.report.length; i++) {
+      totalCant  += this.report[i].valorCant;
+     totalTab  += this.report[i].valorTabulado;
+    
+    }
+
+    elements.push(totalCant +"   " + totalTab);
+
+    
+    return elements;
+  }
+
   getTable(){
 
       const data = [
@@ -72,7 +90,9 @@ export class ReportComponent implements OnInit {
               this.getBody(),
               this.GetTotal()
             ]
+           
           }
+          
         }
       ]
 
@@ -80,12 +100,33 @@ export class ReportComponent implements OnInit {
 
   }
 
+  getTableTotal(){
+debugger;
+    const data = [
+      {
+        table: {
+          body: [
+            this.getTotalGeneral()
+          ]
+        }
+      }
+    ]
+
+    this.totales.push(data);
+
+}
+
 
 
   generarPDF() {
     this.getTable();
+    this.getTableTotal();
     var docDefinition = {
-      content: this.body
+      content: [
+        this.body,
+        {text: ' ', style: 'header'},
+        this.totales
+      ] 
     };
 
     pdfMake.createPdf(docDefinition).open();
