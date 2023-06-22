@@ -41,8 +41,25 @@ export class ReportComponent implements OnInit {
     let elements: any[] = [];
     elements.push("2021-08-01")
     for (let i = 0; i < this.report.length; i++) {
-      elements.push(this.report[i].valorCant +" " + this.report[i].valorTabulado);
+      elements.push(this.report[i].valorCant +"   " + this.report[i].valorTabulado);
     }
+    return elements;
+  }
+
+  GetTotal(){
+    debugger;
+    let elements: any[] = [];
+    let totalCant = 0;
+    let totalTab = 0;
+    elements.push("Total")
+    for (let i = 0; i < this.report.length; i++) {
+     totalCant  += this.report[i].valorCant;
+     totalTab  += this.report[i].valorTabulado;
+      elements.push(totalCant +"   " + totalTab);
+      totalCant = 0;
+      totalTab = 0;
+    }
+    
     return elements;
   }
   getTable(){
@@ -52,7 +69,8 @@ export class ReportComponent implements OnInit {
           table: {
             body: [
               this.getHeaders(),
-              this.getBody()
+              this.getBody(),
+              this.GetTotal()
             ]
           }
         }
