@@ -14,6 +14,7 @@ import { report } from '../models/report-model';
 })
 export class ReportComponent implements OnInit {
   report: report[] = [];
+  body : any[] = [];
   constructor(private reportService: ReportService) { }
   ngOnInit(): void {
     this.reportService.GetReport('2021-08-01').subscribe(
@@ -26,25 +27,45 @@ export class ReportComponent implements OnInit {
     );
   }
 
+  getHeaders(){
+    debugger;
+    let headers: any[] = [];
+    for (let i = 0; i < this.report.length; i++) {
+      headers.push(this.report[i].estacion);
+    }
+    return headers;
+  }
 
+  getBody(){
+    let elements: any[] = [];
+    for (let i = 0; i < this.report.length; i++) {
+      elements.push(this.report[i].valorCant +" " + this.report[i].valorTabulado);
+    }
+    return elements;
+  }
+  getTable(){
 
-  generarPDF() {
-    var docDefinition = {
-      content: [
+      const data = [
         {
-          layout: 'lightHorizontalLines', // optional
           table: {
-            headerRows: 1,
-            widths: [ '*', 'auto', 100, '*' ],
-      
             body: [
-              [ 'First', 'Second', 'Third', 'The last one' ],
-              [ 'Value 1', 'Value 2', 'Value 3', 'Value 4' ],
-              [ { text: 'Bold value', bold: true }, 'Val 2', 'Val 3', 'Val 4' ]
+              this.getHeaders(),
+              this.getBody()
             ]
           }
         }
       ]
+
+      this.body.push(data);
+
+  }
+
+
+
+  generarPDF() {
+    this.getTable();
+    var docDefinition = {
+      content: this.body
     };
 
     pdfMake.createPdf(docDefinition).open();
