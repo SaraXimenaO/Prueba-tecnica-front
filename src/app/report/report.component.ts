@@ -105,6 +105,7 @@ debugger;
     const data = [
       {
         table: {
+          widths: [80, 80],
           body: [
             this.getTotalGeneral()
           ]
