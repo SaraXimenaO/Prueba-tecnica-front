@@ -58,12 +58,10 @@ export class ReportComponent implements OnInit {
       totalCant = 0;
       totalTab = 0;
     }
-    
     return elements;
   }
 
   getTotalGeneral(){
-    debugger;
     let elements: any[] = [];
     elements.push("Totales")
     let totalCant = 0;
@@ -71,12 +69,8 @@ export class ReportComponent implements OnInit {
     for (let i = 0; i < this.report.length; i++) {
       totalCant  += this.report[i].valorCant;
      totalTab  += this.report[i].valorTabulado;
-    
     }
-
     elements.push(totalCant +"   " + totalTab);
-
-    
     return elements;
   }
 
@@ -90,18 +84,13 @@ export class ReportComponent implements OnInit {
               this.getBody(),
               this.GetTotal()
             ]
-           
           }
-          
         }
       ]
-
       this.body.push(data);
-
   }
 
   getTableTotal(){
-debugger;
     const data = [
       {
         table: {
@@ -112,12 +101,8 @@ debugger;
         }
       }
     ]
-
     this.totales.push(data);
-
 }
-
-
 
   generarPDF() {
     this.getTable();
